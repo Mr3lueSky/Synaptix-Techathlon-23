@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="rectangle-container first-rectangle">
+        <h1 class="heading-with-padding">Pneumonia Detection</h1>
+        <!-- Add a class to the form to style its elements separately -->
+    </div>
+    <div class="rectangle-container second-rectangle">
+    <p>Please note that this is an automated assessment, and for a definitive diagnosis, consult with a medical professional</p>
+    </div>
+    <div id="prediction-result"></div>
+    <img src="pneumonia.jpg" alt="Description of the image">
+    <script>
+        // Retrieve the prediction parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const prediction = urlParams.get('prediction');
+
+        // Display the prediction result on the page
+        const resultDiv = document.getElementById('prediction-result');
+        if (prediction) {
+            resultDiv.textContent = `Prediction: ${decodeURIComponent(prediction)}`;
+        } else {
+            resultDiv.textContent = 'No prediction available.';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.centered-title {
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Fantasy';
+    src: url('path-to-your-font-file.woff2') format('woff2');
+    /* Add more src lines for different font formats if needed */
+}
+
+/* Apply 'Courier New' font and increase the font size for h1 elements */
+h1 {
+    font-family: 'Fantasy';
+    font-size: 50px; /* Adjust the font size to your preference */
+    color: rgb(248, 240, 240);
+    text-align: center;
+    padding: 50px;
+}
+
+.first-rectangle {
+    padding-top: 150px; /* Adjust this value as needed */
+    height: 250px; /* Adjust the height to your desired value */
+    border: 5px solid #ccc;
+    background-color: #0a0a0a;
+    max-width: 600px;
+    margin: 100px auto 0;
+}
+
+.first-rectangle h1 {
+    font-size: 50px; /* Adjust the font size for the heading */
+    color: #f4f3f3; /* Adjust the text color */
+    margin-bottom: 10px;
+}
+
+p {
+    padding-left: 350px;
+    padding-top: 100px;
+    color: #ccc;
+}
+
+body {
+    background-image: url('pneumonia.jpg');
+    /* Other background properties here */
+    background-size: cover; /* This property ensures the image covers the entire viewport */
+    background-repeat: no-repeat; /* Prevents image from repeating */
+    background-attachment: fixed; /* Makes the background image fixed while scrolling */
+    background-color: rgba(255, 255, 255, 5); /* Adjust the alpha value (0.5 in this example) */
+}

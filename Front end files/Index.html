@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="rectangle-container">
+        <h1 class="heading-with-padding">Pneumonia Detection</h1>
+        <!-- Add a class to the form to style its elements separately -->
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="form-elements">
+            <input type="file" name="file" accept=".png, .jpg, .jpeg" required>
+            <br>
+            <input type="submit" value="Upload and Predict" id="upload-button">
+        </form>
+    </div>
+    <div id="prediction-result"></div>
+    <img src="pneumonia.jpg" alt="Description of the image">
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+    });
+
+    const data = await response.json();
+    
+    // Encode the prediction result as a URL parameter
+    const predictionParam = encodeURIComponent(data.result);
+
+    // Redirect to the "Result" page with the prediction result as a parameter
+    window.location.href = `Result.html?prediction=${predictionParam}`;
+});
+    </script>
+</body>
+</html>
