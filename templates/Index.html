@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+    <div class="rectangle-container">
+        <h1 class="heading-with-padding">Pneumonia Detection</h1>
+        <!-- Add a class to the form to style its elements separately -->
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="form-elements">
+            <input type="file" name="file" accept=".png, .jpg, .jpeg" required>
+            <br>
+            <button type="submit" id="upload-button">Upload and Predict</button>
+        </form>
+    </div>
+    <div id="prediction-result"></div>
+    <img src="pneumonia.jpeg" alt="Description of the image">
+    <p id="demo"></p>
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+        const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+    }).then(response => response.json())
+            .then(data => {
+                const variable = data.message
+                const message = encodeURIComponent(variable)
+                window.location.href=`/result?message=${message}`
+            });
+    // const r = JSON.stringify(response);
+    //  console.log(r.data);
+    // const response = await fetch('/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    // });
+    //  const r = JSON.stringify(response);
+    //  console.log(response)
+    // document.getElementById("demo").innerHTML = "Value of response: " + r;
+
+    // const data = await response.json();
+    //
+    // // Encode the prediction result as a URL parameter
+    // const predictionParam = encodeURIComponent(data.result);
+    //
+    // // Redirect to the "Result" page with the prediction result as a parameter
+     // window.location.href = `Result.html?prediction=${response}`;
+});
+    </script>
+</body>
+</html>
